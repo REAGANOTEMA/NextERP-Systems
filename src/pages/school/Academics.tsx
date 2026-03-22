@@ -1,60 +1,66 @@
 "use client";
 
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { 
   BookOpen, 
-  TrendingUp, 
+  GraduationCap, 
   Calendar, 
-  Users, 
-  Play, 
-  Clock, 
-  Award,
-  Target,
   BarChart3,
-  CheckCircle,
-  AlertCircle,
-  ArrowRight,
-  Video,
-  MessageSquare,
-  Download,
-  Star,
-  MapPin
+  Clock,
+  Target
 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useAuth } from '@/context/AuthContext';
+import MyProgram from './MyProgram';
+import DegreeProgressAudit from './DegreeProgressAudit';
+import ClassSchedule from './ClassSchedule';
+import GoToClass from './GoToClass';
 
 const Academics = () => {
-  const navigate = useNavigate();
-  const { user } = useAuth();
-  const [activeTab, setActiveTab] = useState('program');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const activeTab = searchParams.get('tab') || 'program';
+
+  const handleTabChange = (value: string) => {
+    setSearchParams({ tab: value });
+  };
 
   return (
     <div className="space-y-8">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-3xl font-bold text-slate-900">Academics</h1>
-          <p className="text-slate-500">Manage your academic journey and stay on track</p>
-        </div>
+      <div>
+        <h1 className="text-3xl font-bold text-slate-900">Academic Portal</h1>
+        <p className="text-slate-500">Manage your courses, track progress, and attend classes.</p>
       </div>
 
-      <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-        <TabsList className="grid w-full grid-cols-4">
-          <TabsTrigger value="program">My Program</TabsTrigger>
-          <TabsTrigger value="progress">Degree Progress</TabsTrigger>
-          <TabsTrigger value="class">Go to Class</TabsTrigger>
-          <TabsTrigger value="schedule">Class Schedule</TabsTrigger>
+      <Tabs value={activeTab} onValueChange={handleTabChange} className="space-y-6">
+        <TabsList className="bg-white p-1 rounded-xl shadow-sm border border-slate-100 w-full justify-start overflow-x-auto">
+          <TabsTrigger value="program" className="rounded-lg px-6 flex items-center gap-2">
+            <GraduationCap size={16} /> My Program
+          </TabsTrigger>
+          <TabsTrigger value="progress" className="rounded-lg px-6 flex items-center gap-2">
+            <BarChart3 size={16} /> Degree Progress
+          </TabsTrigger>
+          <TabsTrigger value="class" className="rounded-lg px-6 flex items-center gap-2">
+            <BookOpen size={16} /> Go to Class
+          </TabsTrigger>
+          <TabsTrigger value="schedule" className="rounded-lg px-6 flex items-center gap-2">
+            <Calendar size={16} /> Class Schedule
+          </TabsTrigger>
         </TabsList>
-        <TabsContent value="program">
-          <Card className="border-none shadow-sm rounded-2xl">
-            <CardHeader><CardTitle>Program Overview</CardTitle></CardHeader>
-            <CardContent><p>Academic program details for {user?.name}</p></CardContent>
-          </Card>
-        </TabsContent>
+
+        <div className="mt-6">
+          <TabsContent value="program" className="m-0">
+            <MyProgram />
+          </TabsContent>
+          <TabsContent value="progress" className="m-0">
+            <DegreeProgressAudit />
+          </TabsContent>
+          <TabsContent value="class" className="m-0">
+            <GoToClass />
+          </TabsContent>
+          <TabsContent value="schedule" className="m-0">
+            <ClassSchedule />
+          </TabsContent>
+        </div>
       </Tabs>
     </div>
   );

@@ -22,15 +22,11 @@ import Assignments from "./pages/school/Assignments";
 import AIAssignments from "./pages/school/AIAssignments";
 import Grades from "./pages/school/Grades";
 import Transcripts from "./pages/school/Transcripts";
-import GoToClass from "./pages/school/GoToClass";
 import Community from "./pages/school/Community";
 import Support from "./pages/school/Support";
-import PrivacySettings from "./pages/school/PrivacySettings";
-import DegreeProgressAudit from "./pages/school/DegreeProgressAudit";
-
-// Removed non-existent imports (UsernameEmail, Finances, etc. are tabs within Profile/Support)
 
 import DashboardLayout from "./components/layout/DashboardLayout";
+import SchoolLayout from "./components/layout/SchoolLayout";
 import NotFound from "./pages/NotFound";
 
 function App() {
@@ -42,7 +38,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
-          {/* Protected Routes */}
+          {/* Protected Main Routes */}
           <Route path="/dashboard" element={<PrivateRoute><DashboardLayout><Dashboard /></DashboardLayout></PrivateRoute>} />
           <Route path="/projects" element={<PrivateRoute><DashboardLayout><Projects /></DashboardLayout></PrivateRoute>} />
           <Route path="/projects/:id" element={<PrivateRoute><DashboardLayout><ProjectDetails /></DashboardLayout></PrivateRoute>} />
@@ -51,20 +47,15 @@ function App() {
           <Route path="/settings" element={<PrivateRoute><DashboardLayout><Settings /></DashboardLayout></PrivateRoute>} />
           <Route path="/profile" element={<PrivateRoute><DashboardLayout><Profile /></DashboardLayout></PrivateRoute>} />
 
-          {/* School Portal Routes */}
-          <Route path="/school/academics" element={<PrivateRoute><DashboardLayout><Academics /></DashboardLayout></PrivateRoute>} />
-          <Route path="/school/assignments" element={<PrivateRoute><DashboardLayout><Assignments /></DashboardLayout></PrivateRoute>} />
-          <Route path="/school/ai-assignments" element={<PrivateRoute><DashboardLayout><AIAssignments /></DashboardLayout></PrivateRoute>} />
-          <Route path="/school/grades" element={<PrivateRoute><DashboardLayout><Grades /></DashboardLayout></PrivateRoute>} />
-          <Route path="/school/transcripts" element={<PrivateRoute><DashboardLayout><Transcripts /></DashboardLayout></PrivateRoute>} />
-          <Route path="/school/go-to-class" element={<PrivateRoute><DashboardLayout><GoToClass /></DashboardLayout></PrivateRoute>} />
-          <Route path="/school/community" element={<PrivateRoute><DashboardLayout><Community /></DashboardLayout></PrivateRoute>} />
-          <Route path="/school/support" element={<PrivateRoute><DashboardLayout><Support /></DashboardLayout></PrivateRoute>} />
-          <Route path="/school/privacy" element={<PrivateRoute><DashboardLayout><PrivacySettings /></DashboardLayout></PrivateRoute>} />
-          <Route path="/school/degree-audit" element={<PrivateRoute><DashboardLayout><DegreeProgressAudit /></DashboardLayout></PrivateRoute>} />
-          
-          {/* Fixed ProfileSchool reference to Profile */}
-          <Route path="/school/profile" element={<PrivateRoute><DashboardLayout><Profile /></DashboardLayout></PrivateRoute>} />
+          {/* School Portal Routes (Using SchoolLayout) */}
+          <Route path="/school/academics" element={<PrivateRoute><SchoolLayout><Academics /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/assignments" element={<PrivateRoute><SchoolLayout><Assignments /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/ai-assignments" element={<PrivateRoute><SchoolLayout><AIAssignments /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/grades" element={<PrivateRoute><SchoolLayout><Grades /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/transcripts" element={<PrivateRoute><SchoolLayout><Transcripts /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/community" element={<PrivateRoute><SchoolLayout><Community /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/support" element={<PrivateRoute><SchoolLayout><Support /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/profile" element={<PrivateRoute><SchoolLayout><Profile /></SchoolLayout></PrivateRoute>} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
