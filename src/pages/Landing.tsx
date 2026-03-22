@@ -39,7 +39,7 @@ const Landing = () => {
           <a href="#solutions" className="hover:text-blue-600 transition-colors">Solutions</a>
           <a href="#academy" className="hover:text-blue-600 transition-colors">Academy</a>
           <button onClick={() => navigate('/careers')} className="hover:text-blue-600 transition-colors">Careers</button>
-          <a href="#about" className="hover:text-blue-600 transition-colors">About Us</a>
+          <button onClick={() => navigate('/about')} className="hover:text-blue-600 transition-colors">About Us</button>
         </div>
         <div className="flex items-center gap-4">
           <Button variant="ghost" onClick={() => navigate('/login')} className="text-slate-600 font-semibold">Sign In</Button>

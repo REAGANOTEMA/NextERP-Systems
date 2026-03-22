@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import { 
   Building2, 
   Users, 
@@ -36,7 +36,6 @@ import { useAuth } from '@/context/AuthContext';
 
 const Company = () => {
   const { user } = useAuth();
-  const isDirector = user?.role === 'director';
   
   const stats = [
     {
@@ -114,33 +113,6 @@ const Company = () => {
     }
   ];
 
-  const achievements = [
-    {
-      year: "2024",
-      title: "Expanded Training Programs",
-      description: "Launched 5 new certification courses in partnership with international tech companies",
-      icon: <TrendingUp className="w-6 h-6" />
-    },
-    {
-      year: "2023", 
-      title: "100+ Projects Completed",
-      description: "Achieved milestone of 100+ successful project deliveries across East Africa",
-      icon: <Target className="w-6 h-6" />
-    },
-    {
-      year: "2022",
-      title: "ISO Certification",
-      description: "Obtained ISO 9001:2015 certification for quality management systems",
-      icon: <Award className="w-6 h-6" />
-    },
-    {
-      year: "2021",
-      title: "Strategic Partnership",
-      description: "Formed partnership with Microsoft for official training programs",
-      icon: <Users className="w-6 h-6" />
-    }
-  ];
-
   const team = [
     {
       name: "Reagan Otema",
@@ -159,30 +131,6 @@ const Company = () => {
       expertise: ["Business Strategy", "Client Management", "Project Planning", "Financial Management"],
       email: "najiib@nexterp.com",
       phone: "+256 700 000 002"
-    }
-  ];
-
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      role: "CEO, TechMart Uganda",
-      content: "NextERP Systems delivered our e-commerce platform on time and exceeded our expectations. Their team is professional and skilled.",
-      rating: 5,
-      project: "E-Commerce Platform"
-    },
-    {
-      name: "David Mwanga",
-      role: "IT Director, FinanceTrust Bank",
-      content: "The cybersecurity training and implementation has significantly improved our security posture. Highly recommended!",
-      rating: 5,
-      project: "Security Implementation"
-    },
-    {
-      name: "Grace Nakato",
-      role: "Student, Web Development Course",
-      content: "The training program transformed my career. I went from zero knowledge to landing a developer job in 3 months!",
-      rating: 5,
-      project: "Web Development Training"
     }
   ];
 
@@ -251,8 +199,7 @@ const Company = () => {
           </p>
           <p className="text-slate-600 leading-relaxed">
             Our mission is to bridge the technology gap in Africa by providing world-class solutions 
-            and training that enable businesses to thrive in the digital age. We combine technical 
-            expertise with business acumen to deliver solutions that drive real results.
+            and training that enable businesses to thrive in the digital age.
           </p>
           <div className="grid grid-cols-2 gap-4">
             <div className="flex items-center gap-3">
@@ -356,65 +303,6 @@ const Company = () => {
                       </div>
                     </div>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      {/* Achievements Timeline */}
-      <section className="space-y-8">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">Our Journey</h2>
-          <p className="text-slate-600 max-w-2xl mx-auto">
-            Key milestones and achievements in our growth story
-          </p>
-        </div>
-        <div className="space-y-6">
-          {achievements.map((achievement, index) => (
-            <div key={index} className="flex gap-6 items-start">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">
-                  {achievement.icon}
-                </div>
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-2">
-                  <Badge className="bg-blue-100 text-blue-800 border-none">
-                    {achievement.year}
-                  </Badge>
-                  <h3 className="text-lg font-semibold text-slate-900">{achievement.title}</h3>
-                </div>
-                <p className="text-slate-600">{achievement.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="space-y-8">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">Client Testimonials</h2>
-          <p className="text-slate-600 max-w-2xl mx-auto">
-            What our clients and students say about working with us
-          </p>
-        </div>
-        <div className="grid md:grid-cols-3 gap-6">
-          {testimonials.map((testimonial, index) => (
-            <Card key={index} className="border-none shadow-sm rounded-2xl">
-              <CardContent className="p-6">
-                <div className="flex mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-500 fill-current" />
-                  ))}
-                </div>
-                <p className="text-slate-600 mb-4 italic">"{testimonial.content}"</p>
-                <div>
-                  <p className="font-semibold text-slate-900">{testimonial.name}</p>
-                  <p className="text-sm text-slate-500">{testimonial.role}</p>
-                  <p className="text-xs text-blue-600 mt-1">{testimonial.project}</p>
                 </div>
               </CardContent>
             </Card>

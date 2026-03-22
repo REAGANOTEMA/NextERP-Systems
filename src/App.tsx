@@ -9,6 +9,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import Landing from "./pages/Landing";
 import Apply from "./pages/Apply";
 import Careers from "./pages/Careers";
+import Company from "./pages/Company";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
@@ -42,6 +43,7 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/apply" element={<Apply />} />
           <Route path="/careers" element={<Careers />} />
+          <Route path="/about" element={<Company />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
