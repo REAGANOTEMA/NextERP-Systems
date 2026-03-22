@@ -163,8 +163,8 @@ const Settings = () => {
                       <AvatarFallback>RO</AvatarFallback>
                     </Avatar>
                     <div className="space-y-2">
-                      <input type="file" accept="image/*" onChange={handleImageChange} />
-                      <Button variant="outline" size="sm" onClick={() => document.querySelector('input[type="file"]')?.click()}>
+                      <input type="file" id="profile-upload" className="hidden" accept="image/*" onChange={handleImageChange} />
+                      <Button variant="outline" size="sm" onClick={() => (document.querySelector('#profile-upload') as HTMLInputElement)?.click()}>
                         Change Photo
                       </Button>
                       <p className="text-xs text-slate-500">JPG, GIF or PNG. Max size of 2MB.</p>

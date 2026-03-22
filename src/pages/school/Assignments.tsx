@@ -48,15 +48,13 @@ import {
   Rocket,
   Flame,
   Trophy,
-  Heart
+  Heart,
+  DollarSign
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import GlassCard from '@/components/ui/GlassCard';
-import NeonButton from '@/components/ui/NeonButton';
-import AnimatedBackground from '@/components/ui/AnimatedBackground';
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -70,7 +68,7 @@ const Assignments = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const [activeTab, setActiveTab] = useState('pending');
-  const [selectedAssignment, setSelectedAssignment] = useState(null);
+  const [selectedAssignment, setSelectedAssignment] = useState<number | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCourse, setSelectedCourse] = useState('all');
   const [selectedStatus, setSelectedStatus] = useState('all');
@@ -293,13 +291,6 @@ const Assignments = () => {
 
   const handleViewGrades = () => {
     navigate('/school/grades');
-  };
-
-  const handleViewFeedback = (assignmentId: number) => {
-    const assignment = assignments.find(a => a.id === assignmentId);
-    if (assignment && assignment.status === 'graded') {
-      setSelectedAssignment(assignmentId);
-    }
   };
 
   const getDaysUntilDue = (dueDate: string) => {
@@ -551,7 +542,7 @@ const Assignments = () => {
                       {assignment.rubric.criteria.map((criterion, index) => (
                         <div key={index} className="flex justify-between">
                           <span className="text-slate-700">{criterion}</span>
-                          <span className="text-slate-900">{assignment.rubric.totalPoints * (parseFloat(criterion.match(/\d+/)?.[0]) / 100)}</span>
+                          <span className="text-slate-900">{assignment.rubric.totalPoints * (parseFloat(criterion.match(/\d+/)?.[0] || "0") / 100)}</span>
                         </div>
                       ))}
                     </div>
@@ -575,52 +566,55 @@ const Assignments = () => {
                     )}
                   </div>
                 ) : (
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <Label>Upload Your Work</Label>
-                        <p className="text-xs text-slate-500">Accepted formats: PDF, DOC, ZIP (Max: 50MB)</p>
+                  <>
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <Label>Upload Your Work</Label>
+                          <p className="text-xs text-slate-500">Accepted formats: PDF, DOC, ZIP (Max: 50MB)</p>
+                        </div>
+                        <div className="text-right">
+                          <Badge className="bg-blue-100 text-blue-800 text-xs">
+                            {assignment.maxAttempts - (submissionHistory.filter(s => s.assignmentId === assignment.id).length + 1)} attempts left
+                          </Badge>
+                        </div>
                       </div>
-                      <div className="text-right">
-                        <Badge className="bg-blue-100 text-blue-800 text-xs">
-                          {assignment.maxAttempts - (submissionHistory.filter(s => s.assignmentId === assignment.id).length + 1)} attempts left
-                        </Badge>
+                      <div className="relative">
+                        <Input 
+                          type="file"
+                          onChange={handleFileUpload}
+                          className="w-full p-3 border-2 border-dashed border-slate-300 rounded-xl"
+                          accept=".pdf,.doc,.doc,.zip"
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                          <div className="text-center">
+                            <Upload className="w-8 h-8 text-slate-400 mx-auto" />
+                            <p className="text-sm text-slate-500 mt-2">Click to upload or drag and drop</p>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <div className="relative">
-                      <Input 
-                        type="file"
-                        onChange={handleFileUpload}
-                        className="w-full p-3 border-2 border-dashed border-slate-300 rounded-xl"
-                        accept=".pdf,.doc,.doc,.zip"
-                      />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <Upload className="w-8 h-8 text-slate-400" />
-                        <p className="text-sm text-slate-500 mt-2">Click to upload or drag and drop</p>
-                      </div>
+                    <div className="flex gap-2 mt-4">
+                      <Button 
+                        variant="outline" 
+                        className="rounded-xl"
+                        onClick={() => setSelectedAssignment(null)}
+                      >
+                        <X className="w-4 h-4 mr-1" />
+                        Clear
+                      </Button>
+                      <Button 
+                        onClick={handleSubmission}
+                        disabled={!selectedAssignment}
+                        className="bg-blue-600 hover:bg-blue-700 disabled:opacity-50 rounded-xl"
+                      >
+                        <Send className="w-4 h-4 mr-1" />
+                        Submit Assignment
+                      </Button>
                     </div>
-                  </div>
-                  <div className="flex gap-2 mt-4">
-                    <Button 
-                      variant="outline" 
-                      className="rounded-xl"
-                      onClick={() => setSelectedAssignment(null)}
-                    >
-                      <X className="w-4 h-4 mr-1" />
-                      Clear
-                    </Button>
-                    <Button 
-                      onClick={handleSubmission}
-                      disabled={!selectedAssignment}
-                      className="bg-blue-600 hover:bg-blue-700 disabled:opacity-50 rounded-xl"
-                    >
-                      <Send className="w-4 h-4 mr-1" />
-                      Submit Assignment
-                    </Button>
-                  </div>
-                </div>
+                  </>
+                )}
               </div>
-            )}
             </CardContent>
           </Card>
         ))}

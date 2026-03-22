@@ -826,6 +826,7 @@ const Profile = () => {
                         </div>
                       ))}
                     </div>
+                  </div>
                 ))}
               </CardContent>
             </Card>

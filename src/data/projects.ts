@@ -49,7 +49,7 @@ export interface Task {
   description: string;
   assignedTo: string;
   status: 'todo' | 'in-progress' | 'review' | 'completed';
-  priority: 'low' | 'medium' | 'high';
+  priority: 'low' | 'medium' | 'high' | 'urgent';
   dueDate: string;
   estimatedHours: number;
   actualHours?: number;

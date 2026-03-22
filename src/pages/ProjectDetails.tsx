@@ -133,7 +133,7 @@ const ProjectDetails = () => {
               {/* View Mode */}
               <div className="flex items-center gap-2 bg-slate-100 p-1 rounded-xl">
                 <Button
-                  variant={viewMode === 'list' ? 'white' : 'ghost'}
+                  variant={viewMode === 'list' ? 'outline' : 'ghost'}
                   size="sm"
                   className={cn("h-8 rounded-lg px-3", viewMode === 'list' && "bg-white shadow-sm")}
                   onClick={() => setViewMode('list')}
@@ -141,7 +141,7 @@ const ProjectDetails = () => {
                   <List size={16} className="mr-2" /> List
                 </Button>
                 <Button
-                  variant={viewMode === 'kanban' ? 'white' : 'ghost'}
+                  variant={viewMode === 'kanban' ? 'outline' : 'ghost'}
                   size="sm"
                   className={cn("h-8 rounded-lg px-3", viewMode === 'kanban' && "bg-white shadow-sm")}
                   onClick={() => setViewMode('kanban')}

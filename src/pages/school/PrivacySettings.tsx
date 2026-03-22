@@ -25,7 +25,8 @@ import {
   Database,
   FileText,
   MapPin,
-  Calendar
+  Calendar,
+  TrendingUp
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -113,24 +114,6 @@ const PrivacySettings = () => {
     showSuccess('Two-factor authentication disabled');
   };
 
-  const handlePasswordChange = () => {
-    if (!showPasswordForm) {
-      setShowPasswordForm(true);
-    } else {
-      setShowPasswordForm(false);
-      showSuccess('Password change instructions sent to your email!');
-    }
-  };
-
-  const getVisibilityIcon = (visibility: string) => {
-    switch(visibility) {
-      case 'public': return <Globe className="w-4 h-4" />;
-      case 'private': return <Lock className="w-4 h-4" />;
-      case 'friends-only': return <Users className="w-4 h-4" />;
-      default: return <Eye className="w-4 h-4" />;
-    }
-  };
-
   const getNotificationIcon = (type: string) => {
     switch(type) {
       case 'assignments': return <FileText className="w-4 h-4" />;
@@ -155,7 +138,7 @@ const PrivacySettings = () => {
           <Button 
             variant="outline" 
             className="rounded-xl"
-            onClick={() => navigate('/school/my-information')}
+            onClick={() => navigate('/school/profile')}
           >
             <X className="mr-2" size={18} />
             Back to Profile
@@ -175,7 +158,7 @@ const PrivacySettings = () => {
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
         <TabsList className="grid w-full grid-cols-4">
           <TabsTrigger value="profile" className="flex items-center gap-2">
-            <User className="w-4 h-4" />
+            <Users className="w-4 h-4" />
             Profile Visibility
           </TabsTrigger>
           <TabsTrigger value="communication" className="flex items-center gap-2">
@@ -220,7 +203,7 @@ const PrivacySettings = () => {
                         <p className="text-sm text-slate-500">{setting.description}</p>
                       </div>
                       <Switch 
-                        checked={privacySettings[setting.key as keyof typeof privacySettings]}
+                        checked={privacySettings[setting.key as keyof typeof privacySettings] as boolean}
                         onCheckedChange={(checked) => handleToggleSetting(setting.key, checked)}
                       />
                     </div>
@@ -241,14 +224,13 @@ const PrivacySettings = () => {
                         <p className="text-sm text-slate-500">{setting.description}</p>
                       </div>
                       <Switch 
-                        checked={privacySettings[setting.key as keyof typeof privacySettings]}
+                        checked={privacySettings[setting.key as keyof typeof privacySettings] as boolean}
                         onCheckedChange={(checked) => handleToggleSetting(setting.key, checked)}
                       />
                     </div>
                   ))}
                 </div>
               </div>
-            </div>
 
               <div className="space-y-4">
                 <h4 className="font-semibold text-slate-900">Privacy Level</h4>
@@ -321,7 +303,7 @@ const PrivacySettings = () => {
                         <p className="text-sm text-slate-500">{setting.description}</p>
                       </div>
                       <Switch 
-                        checked={privacySettings[setting.key as keyof typeof privacySettings]}
+                        checked={privacySettings[setting.key as keyof typeof privacySettings] as boolean}
                         onCheckedChange={(checked) => handleToggleSetting(setting.key, checked)}
                       />
                     </div>
@@ -492,7 +474,6 @@ const PrivacySettings = () => {
                   </Select>
                 </div>
               </div>
-              </div>
 
               <div className="space-y-4">
                 <h4 className="font-semibold text-slate-900">Notification Types</h4>
@@ -506,7 +487,13 @@ const PrivacySettings = () => {
                       </div>
                       <Switch 
                         checked={value}
-                        onCheckedChange={(checked) => setPrivacySettings({...privacySettings, notificationTypes: {...privacySettings.notificationTypes, [key]: checked}})}
+                        onCheckedChange={(checked) => setPrivacySettings({
+                          ...privacySettings, 
+                          notificationTypes: {
+                            ...privacySettings.notificationTypes, 
+                            [key]: checked
+                          }
+                        })}
                       />
                     </div>
                   ))}
@@ -527,15 +514,15 @@ const PrivacySettings = () => {
             <Button 
               variant="outline" 
               className="rounded-xl h-20 flex-col gap-2"
-              onClick={() => navigate('/school/my-information')}
+              onClick={() => navigate('/school/profile')}
             >
-              <User className="w-6 h-6" />
-              <span className="text-sm">My Information</span>
+              <Users className="w-6 h-6" />
+              <span className="text-sm">My Profile</span>
             </Button>
             <Button 
               variant="outline" 
               className="rounded-xl h-20 flex-col gap-2"
-              onClick={() => navigate('/school/username-email')}
+              onClick={() => navigate('/school/profile?tab=username')}
             >
               <Mail className="w-6 h-6" />
               <span className="text-sm">Username & Email</span>
@@ -543,7 +530,7 @@ const PrivacySettings = () => {
             <Button 
               variant="outline" 
               className="rounded-xl h-20 flex-col gap-2"
-              onClick={() => navigate('/school/finances')}
+              onClick={() => navigate('/school/profile?tab=finances')}
             >
               <Database className="w-6 h-6" />
               <span className="text-sm">Finances</span>
@@ -551,7 +538,7 @@ const PrivacySettings = () => {
             <Button 
               variant="outline" 
               className="rounded-xl h-20 flex-col gap-2"
-              onClick={() => navigate('/school/documents')}
+              onClick={() => navigate('/school/profile?tab=documents')}
             >
               <FileText className="w-6 h-6" />
               <span className="text-sm">Documents</span>

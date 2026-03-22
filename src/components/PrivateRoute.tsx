@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
 
 interface PrivateRouteProps {
-  children: JSX.Element;
+  children: React.ReactNode;
   roles?: string[]; // optional: restrict access by role
 }
 
@@ -18,7 +18,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ children, roles }) => {
   // Redirect if role is not allowed
   if (roles && !roles.includes(user?.role || "")) return <Navigate to="/dashboard" replace />;
 
-  return children;
+  return <>{children}</>;
 };
 
 export default PrivateRoute;

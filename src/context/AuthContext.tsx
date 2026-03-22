@@ -1,7 +1,6 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 export type Role = "admin" | "director" | "staff" | "client" | "student";
 
@@ -26,7 +25,7 @@ export interface User {
 interface AuthContextType {
   user: User | null;
   login: (email: string, password: string, role: Role) => boolean;
-  register: (name: string, email: string, role: Role) => void;
+  register: (name: string, email: string, role: Role, password?: string) => void;
   updateProfile: (data: Partial<User>) => void;
   logout: () => void;
   isAuthenticated: boolean;
@@ -117,12 +116,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   // Registration with approval requirement
-  const register = (name: string, email: string, role: Role) => {
+  const register = (name: string, email: string, role: Role, password?: string) => {
     const newUser: User = {
       id: Math.random().toString(36).substr(2, 9),
       name,
       email,
       role,
+      password,
       avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${email}`,
       organizationId: "org_nexterp",
       isApproved: false,

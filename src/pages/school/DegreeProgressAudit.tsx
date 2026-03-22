@@ -110,11 +110,11 @@ const DegreeProgressAudit = () => {
           <p className="text-slate-500">Track your academic progress and graduation requirements</p>
         </div>
         <div className="flex gap-2">
-          <Button variant="outline" className="rounded-xl">
+          <Button variant="outline" className="rounded-xl" onClick={() => navigate('/school/academics')}>
             <ArrowRight className="mr-2" size={18} />
             My Program
           </Button>
-          <Button className="bg-blue-600 hover:bg-blue-700 rounded-xl">
+          <Button className="bg-blue-600 hover:bg-blue-700 rounded-xl" onClick={() => navigate('/school/academics?tab=class')}>
             <BookOpen className="mr-2" size={18} />
             Go to Class
           </Button>
@@ -159,7 +159,6 @@ const DegreeProgressAudit = () => {
                 )}
               </div>
             ))}
-          </div>
           </div>
 
           <div className="bg-blue-50 p-4 rounded-xl">
@@ -264,7 +263,7 @@ const DegreeProgressAudit = () => {
             <Button 
               variant="outline" 
               className="rounded-xl h-20 flex-col gap-2"
-              onClick={() => navigate('/school/my-program')}
+              onClick={() => navigate('/school/academics?tab=program')}
             >
               <BookOpen className="w-6 h-6" />
               <span className="text-sm">My Program</span>
@@ -272,7 +271,7 @@ const DegreeProgressAudit = () => {
             <Button 
               variant="outline" 
               className="rounded-xl h-20 flex-col gap-2"
-              onClick={() => navigate('/school/class-schedule')}
+              onClick={() => navigate('/school/academics?tab=schedule')}
             >
               <Calendar className="w-6 h-6" />
               <span className="text-sm">Class Schedule</span>
@@ -280,7 +279,7 @@ const DegreeProgressAudit = () => {
             <Button 
               variant="outline" 
               className="rounded-xl h-20 flex-col gap-2"
-              onClick={() => navigate('/school/live-lectures')}
+              onClick={() => navigate('/school/academics?tab=class')}
             >
               <Users className="w-6 h-6" />
               <span className="text-sm">Live Lectures</span>
@@ -288,7 +287,7 @@ const DegreeProgressAudit = () => {
             <Button 
               variant="outline" 
               className="rounded-xl h-20 flex-col gap-2"
-              onClick={() => navigate('/school/transcripts')}
+              onClick={() => navigate('/school/profile?tab=documents')}
             >
               <Award className="w-6 h-6" />
               <span className="text-sm">Transcripts</span>

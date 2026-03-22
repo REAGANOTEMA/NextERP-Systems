@@ -26,7 +26,7 @@ const Training = () => {
   const [newCourse, setNewCourse] = useState({
     title: '',
     instructor: user?.name || '',
-    category: COURSE_CATEGORIES[1],
+    category: COURSE_CATEGORIES[1] as typeof COURSE_CATEGORIES[number],
     price: 'UGX 0',
     duration: '7 Weeks',
     image: CATEGORY_IMAGES[COURSE_CATEGORIES[1]],
@@ -340,7 +340,7 @@ const Training = () => {
             <div className="grid grid-cols-2 gap-4">
               <div className="grid gap-2">
                 <Label>Category</Label>
-                <Select value={newCourse.category} onValueChange={(value) => setNewCourse({
+                <Select value={newCourse.category} onValueChange={(value: any) => setNewCourse({
                   ...newCourse,
                   category: value,
                   image: CATEGORY_IMAGES[value] || newCourse.image

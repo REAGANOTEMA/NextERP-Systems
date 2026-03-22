@@ -55,7 +55,7 @@ const Projects = () => {
     name: '',
     client: '',
     clientId: '',
-    category: PROJECT_CATEGORIES[0],
+    category: PROJECT_CATEGORIES[0] as typeof PROJECT_CATEGORIES[number],
     description: '',
     budget: '',
     startDate: new Date().toISOString().split('T')[0],
@@ -421,7 +421,7 @@ const Projects = () => {
             <div className="grid grid-cols-2 gap-4">
               <div className="grid gap-2">
                 <Label>Category</Label>
-                <Select value={newProject.category} onValueChange={(value) => setNewProject({...newProject, category: value})}>
+                <Select value={newProject.category} onValueChange={(value: any) => setNewProject({...newProject, category: value})}>
                   <SelectTrigger className="rounded-xl">
                     <SelectValue />
                   </SelectTrigger>
