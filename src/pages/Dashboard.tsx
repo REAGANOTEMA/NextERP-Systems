@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   TrendingUp, 
   Users, 
@@ -79,6 +80,7 @@ const activities = [
 ];
 
 const Dashboard = () => {
+  const navigate = useNavigate();
   const { user } = useAuth();
   const [applications, setApplications] = useState<any[]>([]);
   const isDirector = user?.role === 'director';
@@ -126,7 +128,7 @@ const Dashboard = () => {
               </div>
               <p className="text-blue-100 text-sm font-medium">Pending Approvals</p>
               <h3 className="text-3xl font-bold mt-1">$12,450.00</h3>
-              <Button variant="ghost" className="w-full mt-4 bg-white/10 hover:bg-white/20 text-white border-none">Review Now</Button>
+              <Button variant="ghost" className="w-full mt-4 bg-white/10 hover:bg-white/20 text-white border-none" onClick={() => navigate('/finance')}>Review Now</Button>
             </CardContent>
           </Card>
         )}
@@ -142,7 +144,7 @@ const Dashboard = () => {
               </div>
               <p className="text-purple-100 text-sm font-medium">Active Deployments</p>
               <h3 className="text-3xl font-bold mt-1">99.9% Uptime</h3>
-              <Button variant="ghost" className="w-full mt-4 bg-white/10 hover:bg-white/20 text-white border-none">View Logs</Button>
+              <Button variant="ghost" className="w-full mt-4 bg-white/10 hover:bg-white/20 text-white border-none" onClick={() => navigate('/projects')}>View Projects</Button>
             </CardContent>
           </Card>
         )}
@@ -215,7 +217,7 @@ const Dashboard = () => {
               <CardContent className="space-y-4">
                 {applications.length > 0 ? (
                   applications.map((app) => (
-                    <div key={app.id} className="flex items-center justify-between p-3 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors cursor-pointer group">
+                    <div key={app.id} className="flex items-center justify-between p-3 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors cursor-pointer group" onClick={() => navigate('/recruitment')}>
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-xl bg-blue-600/20 text-blue-400 flex items-center justify-center font-bold">
                           {app.name.charAt(0)}
@@ -231,7 +233,7 @@ const Dashboard = () => {
                 ) : (
                   <div className="text-center py-4 text-slate-500 text-sm italic">No new applications</div>
                 )}
-                <Button variant="ghost" className="w-full mt-2 text-blue-400 hover:text-blue-300 hover:bg-white/5">View All Applications</Button>
+                <Button variant="ghost" className="w-full mt-2 text-blue-400 hover:text-blue-300 hover:bg-white/5" onClick={() => navigate('/recruitment')}>View All Applications</Button>
               </CardContent>
             </Card>
           )}

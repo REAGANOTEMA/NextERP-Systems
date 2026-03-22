@@ -15,7 +15,8 @@ import {
   LogOut,
   Megaphone,
   Calendar,
-  MessageSquare
+  MessageSquare,
+  UserPlus
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useAuth } from '@/context/AuthContext';
@@ -31,6 +32,7 @@ const Sidebar = () => {
     { icon: Calendar, label: 'Calendar', path: '/calendar', roles: ['admin', 'director', 'staff'] },
     { icon: Users, label: 'Clients', path: '/clients', roles: ['admin', 'director', 'staff'] },
     { icon: GraduationCap, label: 'Training', path: '/training', roles: ['admin', 'director', 'staff', 'student'] },
+    { icon: UserPlus, label: 'Recruitment', path: '/recruitment', roles: ['admin', 'director'] },
     { icon: CircleDollarSign, label: 'Finance', path: '/finance', roles: ['admin', 'director'] },
     { icon: UserSquare2, label: 'HR', path: '/hr', roles: ['admin', 'director'] },
     { icon: Megaphone, label: 'Marketing', path: '/marketing', roles: ['admin', 'director', 'staff'] },
