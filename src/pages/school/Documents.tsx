@@ -25,7 +25,7 @@ import {
   Download,
   Upload,
   FileCheck,
-  Certificate,
+  Award,
   Languages,
   Receipt
 } from 'lucide-react';
@@ -277,7 +277,7 @@ const Documents = () => {
                         <FileCheck size={16} /> Ecclesiastical Endorsement
                       </TabsTrigger>
                       <TabsTrigger value="transcripts" className="rounded-lg px-6 flex items-center gap-2">
-                        <Certificate size={16} /> Transcripts
+                        <Award size={16} /> Transcripts
                       </TabsTrigger>
                       <TabsTrigger value="transfer" className="rounded-lg px-6 flex items-center gap-2">
                         <Upload size={16} /> Credit Transfer

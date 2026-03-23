@@ -25,7 +25,7 @@ import {
   Download,
   Upload,
   FileCheck,
-  Certificate,
+  Award,
   Languages,
   Receipt,
   CreditCard,
@@ -34,13 +34,12 @@ import {
   Wallet,
   Laptop,
   Briefcase,
-  Academic as AcademicIcon,
+  ScrollText as AcademicIcon,
   Heart,
-  Community,
   Phone,
   Mail,
   ExternalLink,
-  Team,
+  UserRoundCheck,
   Book,
   Church,
   Search,
@@ -878,7 +877,7 @@ const StudentPortal = () => {
                           <FileCheck size={16} /> Ecclesiastical Endorsement
                         </TabsTrigger>
                         <TabsTrigger value="transcripts" className="rounded-lg px-6 flex items-center gap-2">
-                          <Certificate size={16} /> Transcripts
+                          <Award size={16} /> Transcripts
                         </TabsTrigger>
                         <TabsTrigger value="transfer" className="rounded-lg px-6 flex items-center gap-2">
                           <Upload size={16} /> Credit Transfer
@@ -1082,7 +1081,7 @@ const StudentPortal = () => {
                           <AcademicIcon size={16} /> Academic Tools
                         </TabsTrigger>
                         <TabsTrigger value="community" className="rounded-lg px-6 flex items-center gap-2">
-                          <Community size={16} /> Community
+                          <Users size={16} /> Community
                         </TabsTrigger>
                         <TabsTrigger value="wellness" className="rounded-lg px-6 flex items-center gap-2">
                           <Heart size={16} /> Student Wellness
@@ -1311,7 +1310,7 @@ const StudentPortal = () => {
                                   <CardContent className="p-6">
                                     <div className="flex items-start gap-4">
                                       <div className="w-12 h-12 bg-orange-50 text-orange-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                                        <Community size={24} />
+                                        <Users size={24} />
                                       </div>
                                       <div className="flex-1">
                                         <h4 className="font-bold text-slate-900 mb-1">{community.title}</h4>
@@ -1408,7 +1407,7 @@ const StudentPortal = () => {
                     <Tabs defaultValue="team" className="space-y-6">
                       <TabsList className="bg-white p-1 rounded-xl shadow-sm border border-slate-200 w-full justify-start overflow-x-auto">
                         <TabsTrigger value="team" className="rounded-lg px-6 flex items-center gap-2">
-                          <Team size={16} /> My Success Team
+                          <UserRoundCheck size={16} /> My Success Team
                         </TabsTrigger>
                         <TabsTrigger value="helpcenter" className="rounded-lg px-6 flex items-center gap-2">
                           <Book size={16} /> Help Center
