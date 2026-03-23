@@ -20,13 +20,23 @@ import CourseManagement from "./pages/CourseManagement";
 import Recruitment from "./pages/Recruitment";
 import Settings from "./pages/Settings";
 import Profile from "./pages/Profile";
+import HR from "./pages/HR";
+import Finance from "./pages/Finance";
+import Assets from "./pages/Assets";
+import Compliance from "./pages/Compliance";
+import Calendar from "./pages/Calendar";
+import Messages from "./pages/Messages";
 
 // School Portal Pages
 import Academics from "./pages/school/Academics";
-import Assignments from "./pages/school/Assignments";
-import AIAssignments from "./pages/school/AIAssignments";
-import Grades from "./pages/school/Grades";
-import Transcripts from "./pages/school/Transcripts";
+import MyProgram from "./pages/school/MyProgram";
+import DegreeProgressAudit from "./pages/school/DegreeProgressAudit";
+import ClassSchedule from "./pages/school/ClassSchedule";
+import GoToClass from "./pages/school/GoToClass";
+import SchoolProfile from "./pages/school/Profile";
+import SchoolFinances from "./pages/school/Finances";
+import SchoolDocuments from "./pages/school/Documents";
+import SchoolResources from "./pages/school/Resources";
 import Community from "./pages/school/Community";
 import Support from "./pages/school/Support";
 
@@ -54,18 +64,54 @@ function App() {
           <Route path="/training" element={<PrivateRoute><DashboardLayout><Training /></DashboardLayout></PrivateRoute>} />
           <Route path="/training/manage/:id" element={<PrivateRoute><DashboardLayout><CourseManagement /></DashboardLayout></PrivateRoute>} />
           <Route path="/recruitment" element={<PrivateRoute><DashboardLayout><Recruitment /></DashboardLayout></PrivateRoute>} />
+          <Route path="/hr" element={<PrivateRoute><DashboardLayout><HR /></DashboardLayout></PrivateRoute>} />
+          <Route path="/finance" element={<PrivateRoute><DashboardLayout><Finance /></DashboardLayout></PrivateRoute>} />
+          <Route path="/assets" element={<PrivateRoute><DashboardLayout><Assets /></DashboardLayout></PrivateRoute>} />
+          <Route path="/compliance" element={<PrivateRoute><DashboardLayout><Compliance /></DashboardLayout></PrivateRoute>} />
+          <Route path="/calendar" element={<PrivateRoute><DashboardLayout><Calendar /></DashboardLayout></PrivateRoute>} />
+          <Route path="/messages" element={<PrivateRoute><DashboardLayout><Messages /></DashboardLayout></PrivateRoute>} />
           <Route path="/settings" element={<PrivateRoute><DashboardLayout><Settings /></DashboardLayout></PrivateRoute>} />
           <Route path="/profile" element={<PrivateRoute><DashboardLayout><Profile /></DashboardLayout></PrivateRoute>} />
 
-          {/* School Portal Routes (Using SchoolLayout) */}
+          {/* School Portal Routes */}
           <Route path="/school/academics" element={<PrivateRoute><SchoolLayout><Academics /></SchoolLayout></PrivateRoute>} />
-          <Route path="/school/assignments" element={<PrivateRoute><SchoolLayout><Assignments /></SchoolLayout></PrivateRoute>} />
-          <Route path="/school/ai-assignments" element={<PrivateRoute><SchoolLayout><AIAssignments /></SchoolLayout></PrivateRoute>} />
-          <Route path="/school/grades" element={<PrivateRoute><SchoolLayout><Grades /></SchoolLayout></PrivateRoute>} />
-          <Route path="/school/transcripts" element={<PrivateRoute><SchoolLayout><Transcripts /></SchoolLayout></PrivateRoute>} />
-          <Route path="/school/community" element={<PrivateRoute><SchoolLayout><Community /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/academics/program" element={<PrivateRoute><SchoolLayout><MyProgram /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/academics/audit" element={<PrivateRoute><SchoolLayout><DegreeProgressAudit /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/academics/schedule" element={<PrivateRoute><SchoolLayout><ClassSchedule /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/academics/class" element={<PrivateRoute><SchoolLayout><GoToClass /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/academics/gatherings" element={<PrivateRoute><SchoolLayout><Community /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/academics/english-connect" element={<PrivateRoute><SchoolLayout><Academics /></SchoolLayout></PrivateRoute>} />
+          
+          <Route path="/school/profile" element={<PrivateRoute><SchoolLayout><SchoolProfile /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/profile/messages" element={<PrivateRoute><SchoolLayout><SchoolProfile /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/profile/info" element={<PrivateRoute><SchoolLayout><SchoolProfile /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/profile/privacy" element={<PrivateRoute><SchoolLayout><SchoolProfile /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/profile/account" element={<PrivateRoute><SchoolLayout><SchoolProfile /></SchoolLayout></PrivateRoute>} />
+          
+          <Route path="/school/finances" element={<PrivateRoute><SchoolLayout><SchoolFinances /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/finances/account" element={<PrivateRoute><SchoolLayout><SchoolFinances /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/finances/discounts" element={<PrivateRoute><SchoolLayout><SchoolFinances /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/finances/pay" element={<PrivateRoute><SchoolLayout><SchoolFinances /></SchoolLayout></PrivateRoute>} />
+          
+          <Route path="/school/documents" element={<PrivateRoute><SchoolLayout><SchoolDocuments /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/documents/center" element={<PrivateRoute><SchoolLayout><SchoolDocuments /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/documents/endorsement" element={<PrivateRoute><SchoolLayout><SchoolDocuments /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/documents/transcripts" element={<PrivateRoute><SchoolLayout><SchoolDocuments /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/documents/transfer" element={<PrivateRoute><SchoolLayout><SchoolDocuments /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/documents/tax" element={<PrivateRoute><SchoolLayout><SchoolDocuments /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/documents/assessment" element={<PrivateRoute><SchoolLayout><SchoolDocuments /></SchoolLayout></PrivateRoute>} />
+          
+          <Route path="/school/resources" element={<PrivateRoute><SchoolLayout><SchoolResources /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/resources/software" element={<PrivateRoute><SchoolLayout><SchoolResources /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/resources/careers" element={<PrivateRoute><SchoolLayout><SchoolResources /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/resources/tools" element={<PrivateRoute><SchoolLayout><SchoolResources /></SchoolLayout></PrivateRoute>} />
+          
+          <Route path="/school/community/wellness" element={<PrivateRoute><SchoolLayout><Community /></SchoolLayout></PrivateRoute>} />
+          
           <Route path="/school/support" element={<PrivateRoute><SchoolLayout><Support /></SchoolLayout></PrivateRoute>} />
-          <Route path="/school/profile" element={<PrivateRoute><SchoolLayout><Profile /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/support/team" element={<PrivateRoute><SchoolLayout><Support /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/support/help" element={<PrivateRoute><SchoolLayout><Support /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/support/companion" element={<PrivateRoute><SchoolLayout><Support /></SchoolLayout></PrivateRoute>} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
