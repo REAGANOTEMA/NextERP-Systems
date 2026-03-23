@@ -13,6 +13,7 @@ import Company from "./pages/Company";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
+import StudentPortal from "./pages/StudentPortal";
 import Projects from "./pages/Projects";
 import ProjectDetails from "./pages/ProjectDetails";
 import Training from "./pages/Training";
@@ -29,6 +30,9 @@ import Grades from "./pages/school/Grades";
 import Transcripts from "./pages/school/Transcripts";
 import Community from "./pages/school/Community";
 import Support from "./pages/school/Support";
+import Documents from "./pages/school/Documents";
+import Resources from "./pages/school/Resources";
+import Finances from "./pages/school/Finances";
 
 import DashboardLayout from "./components/layout/DashboardLayout";
 import SchoolLayout from "./components/layout/SchoolLayout";
@@ -49,6 +53,7 @@ function App() {
 
           {/* Protected Main Routes */}
           <Route path="/dashboard" element={<PrivateRoute><DashboardLayout><Dashboard /></DashboardLayout></PrivateRoute>} />
+          <Route path="/student-portal" element={<PrivateRoute><StudentPortal /></PrivateRoute>} />
           <Route path="/projects" element={<PrivateRoute><DashboardLayout><Projects /></DashboardLayout></PrivateRoute>} />
           <Route path="/projects/:id" element={<PrivateRoute><DashboardLayout><ProjectDetails /></DashboardLayout></PrivateRoute>} />
           <Route path="/training" element={<PrivateRoute><DashboardLayout><Training /></DashboardLayout></PrivateRoute>} />
@@ -66,6 +71,9 @@ function App() {
           <Route path="/school/community" element={<PrivateRoute><SchoolLayout><Community /></SchoolLayout></PrivateRoute>} />
           <Route path="/school/support" element={<PrivateRoute><SchoolLayout><Support /></SchoolLayout></PrivateRoute>} />
           <Route path="/school/profile" element={<PrivateRoute><SchoolLayout><Profile /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/documents" element={<PrivateRoute><SchoolLayout><Documents /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/resources" element={<PrivateRoute><SchoolLayout><Resources /></SchoolLayout></PrivateRoute>} />
+          <Route path="/school/finances" element={<PrivateRoute><SchoolLayout><Finances /></SchoolLayout></PrivateRoute>} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
