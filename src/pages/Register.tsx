@@ -214,10 +214,13 @@ const Register = () => {
                       <SelectValue placeholder="Choose a program" />
                     </SelectTrigger>
                     <SelectContent className="bg-slate-900 border-slate-800 text-white">
-                      <SelectItem value="Web Programming">Web Programming</SelectItem>
-                      <SelectItem value="Cybersecurity">Cybersecurity</SelectItem>
-                      <SelectItem value="Data Science">Data Science</SelectItem>
+                      <SelectItem value="Microsoft Office">Microsoft Office</SelectItem>
                       <SelectItem value="Graphics Design">Graphics Design</SelectItem>
+                      <SelectItem value="Programming (Web Programming)">Programming (Web Programming)</SelectItem>
+                      <SelectItem value="Programming (Computer Programming)">Programming (Computer Programming)</SelectItem>
+                      <SelectItem value="Video Editing">Video Editing</SelectItem>
+                      <SelectItem value="Radio Production and Presentation">Radio Production and Presentation</SelectItem>
+                      <SelectItem value="Computer Repair">Computer Repair</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>

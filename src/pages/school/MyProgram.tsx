@@ -33,17 +33,17 @@ const MyProgram = () => {
 
   // Sample data for demonstration
   const myProgram = {
-    name: "Bachelor of Science in Computer Science",
-    degree: "B.Sc. Computer Science",
-    duration: "4 Years",
-    startYear: "2023",
-    expectedGraduation: "2027",
+    name: "NextERP Professional Skills Program",
+    degree: "Professional Skills Track",
+    duration: "12-24 Months",
+    startYear: "2024",
+    expectedGraduation: "2026",
     credits: {
       completed: 72,
       total: 144,
       inProgress: 18
     },
-    specialization: "Software Engineering",
+    specialization: "Programming (Web + Computer Programming)",
     gpa: 3.8,
     academicStanding: "Excellent"
   };
@@ -52,38 +52,38 @@ const MyProgram = () => {
     name: "Fall 2024",
     courses: [
       {
-        code: "CS301",
-        name: "Advanced Algorithms",
+        code: "PRG201",
+        name: "Programming (Web Programming)",
         credits: 4,
         grade: "A-",
-        instructor: "Dr. Sarah Johnson",
+        instructor: "Dr. Reagan Otema",
         progress: 85,
         attendance: 92
       },
       {
-        code: "CS302", 
-        name: "Database Systems",
-        credits: 3,
+        code: "PRG202",
+        name: "Programming (Computer Programming)",
+        credits: 4,
         grade: "B+",
-        instructor: "Prof. Michael Chen",
+        instructor: "Prof. Binsobedde Najiib",
         progress: 78,
         attendance: 88
       },
       {
-        code: "CS303",
-        name: "Web Development",
-        credits: 4,
+        code: "DPO101",
+        name: "Microsoft Office",
+        credits: 3,
         grade: "A",
-        instructor: "Dr. Reagan Otema",
+        instructor: "Faculty Team",
         progress: 95,
         attendance: 96
       },
       {
-        code: "CS304",
-        name: "Cybersecurity Fundamentals",
+        code: "CMD220",
+        name: "Graphics Design",
         credits: 3,
         grade: "B",
-        instructor: "Prof. Binsobedde Najiib",
+        instructor: "Creative Media Faculty",
         progress: 72,
         attendance: 85
       }

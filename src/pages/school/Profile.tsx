@@ -189,11 +189,11 @@ const Profile = () => {
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center gap-3">
                           <div className="w-12 h-12 bg-blue-600 text-white rounded-lg flex items-center justify-center font-bold">
-                            PC
+                            NP
                           </div>
                           <div>
-                            <h3 className="font-bold text-slate-900">PathwayConnect</h3>
-                            <p className="text-sm text-slate-600">Foundation Program</p>
+                            <h3 className="font-bold text-slate-900">NextERP Professional Academy</h3>
+                            <p className="text-sm text-slate-600">Industry Skills Program</p>
                           </div>
                         </div>
                         <Badge className="bg-green-100 text-green-800">Active</Badge>

@@ -39,6 +39,7 @@ const OFFICIAL_COURSES = [
     image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=800",
     description: "Comprehensive full-stack programming from fundamentals to production projects.",
     certification: "Professional Programming Diploma Track",
+    subtracks: ["Web Programming", "Computer Programming"],
   },
   {
     id: "video-editing",
@@ -131,6 +132,15 @@ const CoursesCatalog = () => {
                 <span className="flex items-center gap-1"><BookOpen size={13} /> Practical + Theory</span>
                 <span className="flex items-center gap-1"><BadgeCheck size={13} className="text-blue-600" /> {course.certification}</span>
               </div>
+              {course.id === "programming" && (
+                <div className="flex flex-wrap gap-2 pt-1">
+                  {(course as any).subtracks?.map((track: string) => (
+                    <Badge key={track} className="bg-indigo-50 text-indigo-700 border-none text-[11px]">
+                      {track}
+                    </Badge>
+                  ))}
+                </div>
+              )}
               <div className="flex gap-2 pt-2">
                 <Button size="sm" className="bg-blue-600 hover:bg-blue-700" onClick={() => navigate('/apply')}>
                   Apply Now

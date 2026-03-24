@@ -43,10 +43,10 @@ const Grades = () => {
       totalStudents: 156
     },
     courses: [
-      { id: 1, code: 'CS301', name: 'Advanced Algorithms', credits: 4, grade: 'A-', percentage: 92, instructor: 'Dr. Sarah Johnson' },
-      { id: 2, code: 'CS302', name: 'Database Systems', credits: 3, grade: 'B+', percentage: 87, instructor: 'Prof. Michael Chen' },
-      { id: 3, code: 'CS303', name: 'Web Development', credits: 4, grade: 'A', percentage: 95, instructor: 'Dr. Reagan Otema' },
-      { id: 4, code: 'CS304', name: 'Cybersecurity Fundamentals', credits: 3, grade: 'B', percentage: 83, instructor: 'Prof. Binsobedde Najiib' }
+      { id: 1, code: 'PRG201', name: 'Programming (Web Programming)', credits: 4, grade: 'A-', percentage: 92, instructor: 'Dr. Reagan Otema' },
+      { id: 2, code: 'PRG202', name: 'Programming (Computer Programming)', credits: 4, grade: 'B+', percentage: 87, instructor: 'Prof. Binsobedde Najiib' },
+      { id: 3, code: 'DPO101', name: 'Microsoft Office', credits: 3, grade: 'A', percentage: 95, instructor: 'Faculty Team' },
+      { id: 4, code: 'CMD220', name: 'Graphics Design', credits: 3, grade: 'B', percentage: 83, instructor: 'Creative Media Faculty' }
     ]
   };
 
