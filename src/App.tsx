@@ -10,8 +10,11 @@ import Landing from "./pages/Landing";
 import Apply from "./pages/Apply";
 import Careers from "./pages/Careers";
 import Company from "./pages/Company";
+import CompanySite from "./pages/CompanySite";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import CoursesCatalog from "./pages/CoursesCatalog";
+import SchoolSite from "./pages/SchoolSite";
 import Dashboard from "./pages/Dashboard";
 import StudentPortal from "./pages/StudentPortal";
 import Projects from "./pages/Projects";
@@ -62,8 +65,12 @@ function App() {
           <Route path="/apply" element={<Apply />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/about" element={<Company />} />
+          <Route path="/company-site" element={<CompanySite />} />
+          <Route path="/school-site" element={<SchoolSite />} />
+          <Route path="/courses" element={<CoursesCatalog />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/register/:type" element={<Register />} />
 
           {/* Protected Main Routes */}
           <Route path="/dashboard" element={<PrivateRoute><DashboardLayout><Dashboard /></DashboardLayout></PrivateRoute>} />

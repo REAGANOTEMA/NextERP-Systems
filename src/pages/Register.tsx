@@ -1,11 +1,13 @@
-"use client";
+ge"use client";
 
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useMemo } from "react";
+import { useNavigate, Link, useParams } from "react-router-dom";
 import { useAuth, Role } from "@/context/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { Building2, UserPlus } from "lucide-react";
 import {
   Card,
@@ -25,13 +27,46 @@ import {
 import { showError, showSuccess } from "@/utils/toast";
 
 const Register = () => {
+  const { type } = useParams();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [role, setRole] = useState<Role>("client");
+  const [role, setRole] = useState<Role>(type === "student" ? "student" : type === "company" ? "client" : "client");
   const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
+  const [location, setLocation] = useState("");
+  const [program, setProgram] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [companyNeeds, setCompanyNeeds] = useState("");
 
   const { register } = useAuth();
   const navigate = useNavigate();
+
+  const isStudentFlow = role === "student";
+  const isCompanyFlow = role === "client";
+
+  const pageCopy = useMemo(() => {
+    if (type === "student") {
+      return {
+        title: "Join NextERP School",
+        subtitle: "Create your student account",
+        description: "Set up your student profile to access courses and your portal."
+      };
+    }
+
+    if (type === "company") {
+      return {
+        title: "Join NextERP Company",
+        subtitle: "Create your organization account",
+        description: "Tell us about your company needs so we can support you better."
+      };
+    }
+
+    return {
+      title: "Join NextERP Systems",
+      subtitle: "Create your enterprise account",
+      description: "Enter your details to get started"
+    };
+  }, [type]);
 
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,15 +76,35 @@ const Register = () => {
       return showError("All fields are required.");
     }
 
+    if (isStudentFlow && !program) {
+      return showError("Please select your intended program.");
+    }
+
+    if (isCompanyFlow && !companyName) {
+      return showError("Please provide your company name.");
+    }
+
     if (password.length < 6) {
       return showError("Password must be at least 6 characters.");
     }
 
     try {
       // Register the user using the provided info
-      register(name, email, role, password);
+      const title = isStudentFlow ? "Student Applicant" : isCompanyFlow ? "Company Applicant" : "Platform Applicant";
+      const bio = isStudentFlow
+        ? `Applying for ${program}.`
+        : isCompanyFlow
+          ? `Company: ${companyName}. Needs: ${companyNeeds || "General ERP support"}`
+          : "General application";
+
+      register(name, email, role, password, {
+        phone,
+        location,
+        title,
+        bio,
+      });
       showSuccess("Account created successfully!");
-      navigate("/dashboard");
+      navigate("/login");
     } catch (err) {
       showError("Registration failed. Please try again.");
     }
@@ -69,10 +124,8 @@ const Register = () => {
           <div className="inline-flex items-center justify-center p-3 bg-blue-600 rounded-2xl shadow-xl shadow-blue-900/20 mb-4">
             <Building2 className="text-white" size={32} />
           </div>
-          <h1 className="text-3xl font-bold text-white tracking-tight">
-            Join NextERP Systems
-          </h1>
-          <p className="text-slate-400 mt-2">Create your enterprise account</p>
+          <h1 className="text-3xl font-bold text-white tracking-tight">{pageCopy.title}</h1>
+          <p className="text-slate-400 mt-2">{pageCopy.subtitle}</p>
         </div>
 
         {/* Register Card */}
@@ -80,7 +133,7 @@ const Register = () => {
           <CardHeader>
             <CardTitle>Create Account</CardTitle>
             <CardDescription className="text-slate-400">
-              Enter your details to get started
+              {pageCopy.description}
             </CardDescription>
           </CardHeader>
 
@@ -111,11 +164,34 @@ const Register = () => {
                 />
               </div>
 
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="phone">Phone</Label>
+                  <Input
+                    id="phone"
+                    placeholder="+256..."
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="bg-slate-800 border-slate-700 text-white focus:ring-blue-500"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="location">Location</Label>
+                  <Input
+                    id="location"
+                    placeholder="City, Country"
+                    value={location}
+                    onChange={(e) => setLocation(e.target.value)}
+                    className="bg-slate-800 border-slate-700 text-white focus:ring-blue-500"
+                  />
+                </div>
+              </div>
+
               {/* Role */}
               <div className="space-y-2">
                 <Label>Account Type</Label>
                 <Select
-                  defaultValue="client"
+                  value={role}
                   onValueChange={(value) => setRole(value as Role)}
                 >
                   <SelectTrigger className="bg-slate-800 border-slate-700 text-white">
@@ -129,6 +205,48 @@ const Register = () => {
                   </SelectContent>
                 </Select>
               </div>
+
+              {isStudentFlow && (
+                <div className="space-y-2">
+                  <Label>Intended Program</Label>
+                  <Select value={program} onValueChange={setProgram}>
+                    <SelectTrigger className="bg-slate-800 border-slate-700 text-white">
+                      <SelectValue placeholder="Choose a program" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-slate-900 border-slate-800 text-white">
+                      <SelectItem value="Web Programming">Web Programming</SelectItem>
+                      <SelectItem value="Cybersecurity">Cybersecurity</SelectItem>
+                      <SelectItem value="Data Science">Data Science</SelectItem>
+                      <SelectItem value="Graphics Design">Graphics Design</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              )}
+
+              {isCompanyFlow && (
+                <>
+                  <div className="space-y-2">
+                    <Label htmlFor="companyName">Company Name</Label>
+                    <Input
+                      id="companyName"
+                      placeholder="Your organization"
+                      value={companyName}
+                      onChange={(e) => setCompanyName(e.target.value)}
+                      className="bg-slate-800 border-slate-700 text-white focus:ring-blue-500"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="companyNeeds">What do you need help with?</Label>
+                    <Textarea
+                      id="companyNeeds"
+                      placeholder="Software development, training, cybersecurity, etc."
+                      value={companyNeeds}
+                      onChange={(e) => setCompanyNeeds(e.target.value)}
+                      className="bg-slate-800 border-slate-700 text-white focus:ring-blue-500"
+                    />
+                  </div>
+                </>
+              )}
 
               {/* Password */}
               <div className="space-y-2">
@@ -158,7 +276,7 @@ const Register = () => {
           <CardFooter className="flex justify-center border-t border-slate-800 pt-4">
             <p className="text-slate-400 text-sm">
               Already have an account?{" "}
-              <Link to="/" className="text-blue-400 hover:underline">
+              <Link to="/login" className="text-blue-400 hover:underline">
                 Sign In
               </Link>
             </p>

@@ -25,7 +25,7 @@ export interface User {
 interface AuthContextType {
   user: User | null;
   login: (email: string, password: string, role: Role) => boolean;
-  register: (name: string, email: string, role: Role, password?: string) => void;
+  register: (name: string, email: string, role: Role, password?: string, profileData?: Partial<User>) => void;
   updateProfile: (data: Partial<User>) => void;
   logout: () => void;
   isAuthenticated: boolean;
@@ -116,7 +116,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   // Registration with approval requirement
-  const register = (name: string, email: string, role: Role, password?: string) => {
+  const register = (name: string, email: string, role: Role, password?: string, profileData?: Partial<User>) => {
     const newUser: User = {
       id: Math.random().toString(36).substr(2, 9),
       name,
@@ -128,7 +128,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       isApproved: false,
       registrationDate: new Date().toISOString(),
       enrolledCourses: [],
-      projectIds: []
+      projectIds: [],
+      ...profileData,
     };
     
     // Add to pending users for director approval

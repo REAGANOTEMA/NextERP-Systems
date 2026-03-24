@@ -77,6 +77,15 @@ const Landing = () => {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-8">
               <div className="flex items-center gap-6">
+                <button onClick={() => navigate('/company-site')} className="text-slate-700 hover:text-blue-600 font-medium transition-colors">
+                  Company Site
+                </button>
+                <button onClick={() => navigate('/school-site')} className="text-slate-700 hover:text-blue-600 font-medium transition-colors">
+                  School Site
+                </button>
+                <button onClick={() => navigate('/courses')} className="text-slate-700 hover:text-blue-600 font-medium transition-colors">
+                  Courses
+                </button>
                 <button className="text-slate-700 hover:text-blue-600 font-medium transition-colors">
                   Certificates & Degrees
                 </button>
@@ -119,6 +128,15 @@ const Landing = () => {
         {isMobileMenuOpen && (
           <div className="lg:hidden bg-white border-t border-slate-200 py-4">
             <div className="max-w-7xl mx-auto px-4 space-y-3">
+              <button onClick={() => navigate('/company-site')} className="block w-full text-left py-2 text-slate-700 hover:text-blue-600 font-medium">
+                Company Site
+              </button>
+              <button onClick={() => navigate('/school-site')} className="block w-full text-left py-2 text-slate-700 hover:text-blue-600 font-medium">
+                School Site
+              </button>
+              <button onClick={() => navigate('/courses')} className="block w-full text-left py-2 text-slate-700 hover:text-blue-600 font-medium">
+                Courses
+              </button>
               <button className="block w-full text-left py-2 text-slate-700 hover:text-blue-600 font-medium">
                 Certificates & Degrees
               </button>
@@ -134,6 +152,9 @@ const Landing = () => {
               <div className="pt-3 border-t border-slate-200 space-y-2">
                 <Button variant="outline" onClick={() => navigate('/login')} className="w-full">
                   Sign In
+                </Button>
+                <Button variant="outline" onClick={() => navigate('/register/student')}>
+                  Student Sign Up
                 </Button>
                 <Button variant="outline" onClick={() => navigate('/register')} className="w-full">
                   Request Info
