@@ -9,6 +9,7 @@ import { createRoot } from "react-dom/client";
 import App from "./App";
 import { ThemeProvider } from "./components/theme-provider";
 import "./globals.css";
+import "./styles/animations.css";
 
 // Get root container
 const container = document.getElementById("root");

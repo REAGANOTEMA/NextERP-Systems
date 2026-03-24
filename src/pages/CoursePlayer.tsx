@@ -1,4 +1,4 @@
-// "use client"
+"use client";
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { 
@@ -21,11 +21,22 @@ const CoursePlayer = () => {
 
   useEffect(() => {
     const courses = storage.get('courses', initialData.courses);
-    const found = courses.find((c: any) => c.id === Number(id));
+    const found = courses.find((c: any) => String(c.id) === String(id));
     setCourse(found);
   }, [id]);
 
-  if (!course) return null;
+  if (!course) {
+    return (
+      <div className="min-h-screen bg-slate-950 text-white flex items-center justify-center">
+        <div className="text-center space-y-4">
+          <h2 className="text-2xl font-bold">Course not found</h2>
+          <Button onClick={() => navigate('/training')} className="bg-blue-600 hover:bg-blue-700 rounded-xl">
+            Back to Training
+          </Button>
+        </div>
+      </div>
+    );
+  }
 
   const currentModule = course.curriculum.find((m: any) => m.week === activeWeek);
 

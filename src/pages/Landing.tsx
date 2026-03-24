@@ -31,9 +31,10 @@ import LogoImg from "@/assets/logo.jpg";
 const Landing = () => {
   const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const admissionFee = "UGX 50,000";
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white section-enter">
       {/* Top Navigation Bar */}
       <div className="bg-slate-900 text-white py-2 px-4 text-sm">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -61,13 +62,11 @@ const Landing = () => {
       </div>
 
       {/* Main Navigation */}
-      <nav className="bg-white border-b border-slate-200 sticky top-0 z-50">
+      <nav className="bg-white border-b border-slate-200 sticky top-0 z-50 animate-fade-in">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-lg overflow-hidden shadow-lg bg-yellow-400 flex items-center justify-center">
-                <GraduationCap className="text-yellow-900" size={24} />
-              </div>
+              <img src={LogoImg} alt="NextERP Logo" className="brand-logo brand-logo-md logo-spotlight" />
               <div>
                 <span className="font-bold text-xl text-slate-900">NextERP</span>
                 <span className="text-xs text-slate-600 ml-1">Systems</span>
@@ -86,16 +85,16 @@ const Landing = () => {
                 <button onClick={() => navigate('/courses')} className="text-slate-700 hover:text-blue-600 font-medium transition-colors">
                   Courses
                 </button>
-                <button className="text-slate-700 hover:text-blue-600 font-medium transition-colors">
+                <button onClick={() => navigate('/courses')} className="text-slate-700 hover:text-blue-600 font-medium transition-colors">
                   Certificates & Degrees
                 </button>
-                <button className="text-slate-700 hover:text-blue-600 font-medium transition-colors">
+                <button onClick={() => navigate('/register/student')} className="text-slate-700 hover:text-blue-600 font-medium transition-colors">
                   Admissions
                 </button>
-                <button className="text-slate-700 hover:text-blue-600 font-medium transition-colors">
+                <button onClick={() => navigate('/courses')} className="text-slate-700 hover:text-blue-600 font-medium transition-colors">
                   Tuition & Discounts
                 </button>
-                <button className="text-slate-700 hover:text-blue-600 font-medium transition-colors">
+                <button onClick={() => navigate('/about')} className="text-slate-700 hover:text-blue-600 font-medium transition-colors">
                   About Us
                 </button>
               </div>
@@ -126,7 +125,7 @@ const Landing = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden bg-white border-t border-slate-200 py-4">
+          <div className="lg:hidden bg-white border-t border-slate-200 py-4 animate-fade-in">
             <div className="max-w-7xl mx-auto px-4 space-y-3">
               <button onClick={() => navigate('/company-site')} className="block w-full text-left py-2 text-slate-700 hover:text-blue-600 font-medium">
                 Company Site
@@ -137,23 +136,23 @@ const Landing = () => {
               <button onClick={() => navigate('/courses')} className="block w-full text-left py-2 text-slate-700 hover:text-blue-600 font-medium">
                 Courses
               </button>
-              <button className="block w-full text-left py-2 text-slate-700 hover:text-blue-600 font-medium">
+              <button onClick={() => navigate('/courses')} className="block w-full text-left py-2 text-slate-700 hover:text-blue-600 font-medium">
                 Certificates & Degrees
               </button>
-              <button className="block w-full text-left py-2 text-slate-700 hover:text-blue-600 font-medium">
+              <button onClick={() => navigate('/register/student')} className="block w-full text-left py-2 text-slate-700 hover:text-blue-600 font-medium">
                 Admissions
               </button>
-              <button className="block w-full text-left py-2 text-slate-700 hover:text-blue-600 font-medium">
+              <button onClick={() => navigate('/courses')} className="block w-full text-left py-2 text-slate-700 hover:text-blue-600 font-medium">
                 Tuition & Discounts
               </button>
-              <button className="block w-full text-left py-2 text-slate-700 hover:text-blue-600 font-medium">
+              <button onClick={() => navigate('/about')} className="block w-full text-left py-2 text-slate-700 hover:text-blue-600 font-medium">
                 About Us
               </button>
               <div className="pt-3 border-t border-slate-200 space-y-2">
                 <Button variant="outline" onClick={() => navigate('/login')} className="w-full">
                   Sign In
                 </Button>
-                <Button variant="outline" onClick={() => navigate('/register/student')}>
+                <Button variant="outline" onClick={() => navigate('/register/student')} className="w-full">
                   Student Sign Up
                 </Button>
                 <Button variant="outline" onClick={() => navigate('/register')} className="w-full">
@@ -169,9 +168,9 @@ const Landing = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-blue-50 to-white py-20">
+      <section className="relative bg-gradient-to-b from-blue-50 to-white py-20 animate-fade-in">
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
+          <div className="space-y-8 animate-slide-in-left">
             <div className="space-y-4">
               <h1 className="text-4xl md:text-6xl font-bold text-slate-900 leading-tight">
                 Start Small.
@@ -184,6 +183,9 @@ const Landing = () => {
             </div>
             
             <div className="space-y-4">
+              <div className="inline-flex items-center rounded-full bg-emerald-50 border border-emerald-200 px-4 py-2 text-emerald-800 text-sm font-semibold">
+                Admission Fee: {admissionFee}
+              </div>
               <p className="text-slate-600 leading-relaxed">
                 NextERP Systems provides access to spiritually based degrees completely online at an affordable price. 
                 We bring quality education to East Africa with values that matter.
@@ -207,7 +209,7 @@ const Landing = () => {
             </div>
           </div>
 
-          <div className="relative">
+          <div className="relative animate-scale-in">
             <div className="rounded-2xl overflow-hidden shadow-2xl">
               <img 
                 src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800" 
@@ -229,7 +231,7 @@ const Landing = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white section-enter">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
@@ -241,7 +243,7 @@ const Landing = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="border-none shadow-lg hover:shadow-xl transition-shadow">
+            <Card className="card-animate border-none shadow-lg hover:shadow-xl transition-shadow">
               <CardContent className="p-8 text-center">
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
                   <DollarSign className="text-blue-600" size={32} />
@@ -253,7 +255,7 @@ const Landing = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-none shadow-lg hover:shadow-xl transition-shadow">
+            <Card className="card-animate border-none shadow-lg hover:shadow-xl transition-shadow">
               <CardContent className="p-8 text-center">
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
                   <Globe className="text-green-600" size={32} />
@@ -265,7 +267,7 @@ const Landing = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-none shadow-lg hover:shadow-xl transition-shadow">
+            <Card className="card-animate border-none shadow-lg hover:shadow-xl transition-shadow">
               <CardContent className="p-8 text-center">
                 <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
                   <Church className="text-purple-600" size={32} />
@@ -281,7 +283,7 @@ const Landing = () => {
       </section>
 
       {/* Partnership Section */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-slate-50 section-enter">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -302,7 +304,7 @@ const Landing = () => {
                 </Button>
               </div>
             </div>
-            <div className="bg-white p-8 rounded-2xl shadow-lg">
+            <div className="bg-white p-8 rounded-2xl shadow-lg animate-scale-in">
               <blockquote className="text-lg text-slate-700 italic mb-4">
                 "NextERP Systems brings an innovative approach to education — one unique to East Africa and to the world."
               </blockquote>
@@ -315,7 +317,7 @@ const Landing = () => {
       </section>
 
       {/* Certificate Program Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white section-enter">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
@@ -356,12 +358,12 @@ const Landing = () => {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
+            <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-8 text-white animate-float">
               <h3 className="text-2xl font-bold mb-6">View Programs</h3>
               <p className="mb-6">
                 Explore our certificate programs and degree options to find the path that's right for you.
               </p>
-              <Button className="bg-white text-blue-600 hover:bg-blue-50 px-6 py-3">
+                <Button onClick={() => navigate('/courses')} className="bg-white text-blue-600 hover:bg-blue-50 px-6 py-3">
                 View All Programs
               </Button>
             </div>
@@ -370,7 +372,7 @@ const Landing = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-slate-900 text-white">
+      <section className="py-20 bg-slate-900 text-white section-enter">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
@@ -394,7 +396,7 @@ const Landing = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-blue-600">
+      <section className="py-20 bg-blue-600 section-enter">
         <div className="max-w-4xl mx-auto text-center px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Ready to Transform Your Future?
@@ -411,6 +413,7 @@ const Landing = () => {
             </Button>
             <Button 
               variant="outline"
+              onClick={() => navigate('/register')}
               className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg font-semibold"
             >
               Need Help?
@@ -420,14 +423,12 @@ const Landing = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-900 text-slate-300 py-12">
+      <footer className="bg-slate-900 text-slate-300 py-12 animate-fade-in">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div className="col-span-1 md:col-span-2">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-lg bg-yellow-400 flex items-center justify-center">
-                  <GraduationCap className="text-yellow-900" size={20} />
-                </div>
+                <img src={LogoImg} alt="NextERP Logo" className="brand-logo brand-logo-sm logo-spotlight" />
                 <span className="font-bold text-xl text-white">NextERP Systems</span>
               </div>
               <p className="text-slate-400 mb-4">
@@ -454,10 +455,10 @@ const Landing = () => {
             <div>
               <h4 className="font-bold text-white mb-4">Programs</h4>
               <ul className="space-y-2">
-                <li><button className="hover:text-white">Certificates & Degrees</button></li>
-                <li><button className="hover:text-white">PathwayConnect</button></li>
-                <li><button className="hover:text-white">EnglishConnect</button></li>
-                <li><button className="hover:text-white">Student Support</button></li>
+                <li><button onClick={() => navigate('/courses')} className="hover:text-white">Certificates & Degrees</button></li>
+                <li><button onClick={() => navigate('/school-site')} className="hover:text-white">PathwayConnect</button></li>
+                <li><button onClick={() => navigate('/school-site')} className="hover:text-white">EnglishConnect</button></li>
+                <li><button onClick={() => navigate('/register/student')} className="hover:text-white">Student Support</button></li>
               </ul>
             </div>
           </div>

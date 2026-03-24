@@ -21,6 +21,7 @@ import Projects from "./pages/Projects";
 import ProjectDetails from "./pages/ProjectDetails";
 import Training from "./pages/Training";
 import CourseManagement from "./pages/CourseManagement";
+import CoursePlayer from "./pages/CoursePlayer";
 import Recruitment from "./pages/Recruitment";
 import Settings from "./pages/Settings";
 import Profile from "./pages/Profile";
@@ -79,6 +80,7 @@ function App() {
           <Route path="/projects/:id" element={<PrivateRoute><DashboardLayout><ProjectDetails /></DashboardLayout></PrivateRoute>} />
           <Route path="/training" element={<PrivateRoute><DashboardLayout><Training /></DashboardLayout></PrivateRoute>} />
           <Route path="/training/manage/:id" element={<PrivateRoute><DashboardLayout><CourseManagement /></DashboardLayout></PrivateRoute>} />
+          <Route path="/training/player/:id" element={<PrivateRoute><CoursePlayer /></PrivateRoute>} />
           <Route path="/recruitment" element={<PrivateRoute><DashboardLayout><Recruitment /></DashboardLayout></PrivateRoute>} />
           <Route path="/hr" element={<PrivateRoute><DashboardLayout><HR /></DashboardLayout></PrivateRoute>} />
           <Route path="/finance" element={<PrivateRoute><DashboardLayout><Finance /></DashboardLayout></PrivateRoute>} />
