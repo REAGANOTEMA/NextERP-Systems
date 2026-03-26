@@ -133,19 +133,53 @@ const Landing: React.FC = () => {
           <p className="text-xl text-white mb-8">
             Educational Management System
           </p>
-          <div className="space-x-4">
-            <a
-              href="/login"
-              className="bg-white text-blue-600 px-6 py-3 rounded-md font-medium hover:bg-gray-100"
-            >
-              Login
-            </a>
-            <a
-              href="/register"
-              className="bg-transparent text-white px-6 py-3 rounded-md font-medium border border-white hover:bg-white hover:text-blue-600"
-            >
-              Register
-            </a>
+          <div className="max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-8 border border-white border-opacity-20">
+                <h2 className="text-2xl font-bold text-white mb-4">
+                  👤 Sign In
+                </h2>
+                <p className="text-white mb-6">
+                  Already have an account? Access your dashboard.
+                </p>
+                <a
+                  href="/login"
+                  className="w-full bg-white text-blue-600 px-6 py-3 rounded-md font-medium hover:bg-gray-100 text-center inline-block transition-colors"
+                >
+                  Login to Your Account
+                </a>
+              </div>
+              
+              <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-8 border border-white border-opacity-20">
+                <h2 className="text-2xl font-bold text-white mb-4">
+                  📝 Create Account
+                </h2>
+                <p className="text-white mb-6">
+                  New to Conerstone Software Company? Join us today.
+                </p>
+                <a
+                  href="/register"
+                  className="w-full bg-transparent text-white px-6 py-3 rounded-md font-medium border-2 border-white hover:bg-white hover:text-blue-600 text-center inline-block transition-colors"
+                >
+                  Create New Account
+                </a>
+              </div>
+            </div>
+            
+            <div className="mt-8 text-center">
+              <p className="text-white text-lg">
+                🎓 Join our educational platform or continue your learning journey
+              </p>
+              <div className="mt-4 flex justify-center space-x-4">
+                <a href="/login" className="text-white underline hover:text-gray-200">
+                  Sign In
+                </a>
+                <span className="text-white">|</span>
+                <a href="/register" className="text-white underline hover:text-gray-200">
+                  Sign Up
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
