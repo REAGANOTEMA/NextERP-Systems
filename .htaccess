@@ -1,0 +1,19 @@
+RewriteEngine On
+
+# API Routes
+RewriteRule ^api/auth/(.*)$ api/auth.php [L,QSA]
+RewriteRule ^api/courses/(.*)$ api/courses.php [L,QSA]
+RewriteRule ^api/assignments/(.*)$ api/assignments.php [L,QSA]
+RewriteRule ^api/submissions/(.*)$ api/submissions.php [L,QSA]
+RewriteRule ^api/attendance/(.*)$ api/attendance.php [L,QSA]
+RewriteRule ^api/messages/(.*)$ api/messages.php [L,QSA]
+RewriteRule ^api/documents/(.*)$ api/documents.php [L,QSA]
+RewriteRule ^api/finances/(.*)$ api/finances.php [L,QSA]
+
+# Health check
+RewriteRule ^api/health$ api/health.php [L,QSA]
+
+# Frontend routes (for React Router)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ frontend/index.html [L,QSA]
