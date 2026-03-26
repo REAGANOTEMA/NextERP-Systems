@@ -169,7 +169,7 @@ const RegisterForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/auth/register', {
+      const response = await fetch('/api/auth/register-simple.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
